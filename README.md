@@ -2,18 +2,45 @@
 
 A desktop CMS built with Electron and Node.js for managing the content of the Harshit Kalra Portfolio website without manually editing JSON files.
 
-## Features
+---
 
-* Dashboard with portfolio statistics
-* Project management system
-* Technology management
-* JSON read/write services
-* Electron-based desktop interface
-* Automatic content persistence
+# What This CMS Does
+
+The CMS manages portfolio content such as:
+
+- Projects
+- Technologies
+- Tags
+- Timeline
+- Achievements
+- Profile Information
+- Social Links
+- Images
+- SEO Metadata
 
 ---
 
-## Architecture
+# What This CMS Does NOT Do
+
+The CMS does not modify website structure.
+
+Examples:
+
+❌ Create new pages
+
+❌ Create new website sections
+
+❌ Modify routing
+
+❌ Modify layouts
+
+❌ Modify frontend logic
+
+Any structural change must first be implemented in the Portfolio Website project and then exposed through the CMS if content editing is required.
+
+---
+
+# Architecture
 
 ```text
 Portfolio CMS
@@ -29,88 +56,180 @@ GitHub
 Vercel
 ```
 
-The CMS manages portfolio content only.
-It does **not** manage website structure, routing, layouts, or application logic.
+The CMS is designed specifically for the Harshit Kalra Portfolio.
 
-The CMS is intended to manage both content updates and publishing workflows.
-A long-term V1 goal is to support:
+The portfolio defines the structure.
 
-CMS
-    ↓
-Save Changes
-    ↓
-Commit Changes
-    ↓
-Push Changes
-    ↓
-Website Updated
+The CMS manages the content.
 
-without requiring routine Git commands from the terminal.
 ---
 
-## Prerequisites
+# Repository Structure
 
-Install:
+This repository intentionally does NOT include:
 
-* Node.js (LTS)
+```text
+node_modules/
+dist/
+build/
+```
 
-Verify installation:
+These are generated locally.
+
+The repository contains:
+
+```text
+src/
+main.js
+preload.js
+package.json
+package-lock.json
+README.md
+```
+
+---
+
+# New Machine Setup
+
+Follow these steps exactly.
+
+---
+
+## Step 1 — Install Node.js
+
+Download and install:
+
+https://nodejs.org
+
+Recommended:
+
+```text
+Node.js LTS
+```
+
+---
+
+## Step 2 — Verify Installation
+
+Open PowerShell or Terminal:
 
 ```bash
 node --version
+```
+
+Example:
+
+```text
+v24.x.x
+```
+
+Check npm:
+
+```bash
 npm --version
 ```
 
-On some Windows systems:
+Example:
+
+```text
+11.x.x
+```
+
+If npm does not work:
 
 ```bash
 npm.cmd --version
 ```
 
-may work when:
-
-```bash
-npm --version
-```
-
-does not.
-
 ---
 
-## Installation
-
-Clone the repositories:
+## Step 3 — Clone Portfolio Repository
 
 ```bash
 git clone <portfolio-repository-url>
+```
+
+Purpose:
+
+```text
+Contains the actual website.
+Contains all JSON files managed by the CMS.
+```
+
+---
+
+## Step 4 — Clone CMS Repository
+
+```bash
 git clone <cms-repository-url>
 ```
 
-Install dependencies:
+Purpose:
+
+```text
+Contains the Electron desktop application.
+```
+
+---
+
+## Step 5 — Open CMS Folder
+
+```bash
+cd portfolio-content-manager
+```
+
+---
+
+## Step 6 — Install Dependencies
 
 ```bash
 npm install
 ```
 
+Purpose:
+
+```text
+Reads package.json
+Reads package-lock.json
+
+Automatically installs:
+
+- Electron
+- Node dependencies
+- All required packages
+
+Creates:
+
+node_modules/
+```
+
+This step may take a few minutes on first setup.
+
 ---
 
-## Run
+## Step 7 — Start CMS
 
 ```bash
 npm start
 ```
 
-If required on your system:
+If your system does not recognize npm correctly:
 
 ```bash
 npm.cmd start
 ```
 
+Purpose:
+
+```text
+Launches Electron Desktop Application.
+```
+
 ---
 
-## Troubleshooting
+# Troubleshooting
 
-### Node Works but npm Doesn't
+## node Works but npm Does Not
 
 If:
 
@@ -118,23 +237,30 @@ If:
 node --version
 ```
 
-works but:
+works
+
+but:
 
 ```bash
 npm --version
 ```
 
-fails:
+fails
 
-1. Restart Terminal / VS Code
-2. Verify Node.js is added to PATH
-3. Try:
+try:
 
 ```bash
 npm.cmd --version
 ```
 
-4. Check:
+If the issue persists:
+
+1. Restart VS Code
+2. Restart Terminal
+3. Restart Computer
+4. Verify Node.js is added to PATH
+
+In some Windows configurations:
 
 ```text
 Windows Security
@@ -142,90 +268,105 @@ Windows Security
 → Smart App Control
 ```
 
-Some systems may block npm scripts until the setting is adjusted.
+may interfere with npm execution.
 
 ---
 
-## Current Status
+# Dependency Management
 
-### Completed
+Do NOT commit:
 
-* Electron Setup
-* IPC Communication
-* JSON Services
-* Dashboard
-* Navigation System
-* Project Editor
-* Technology Viewer
-* Technology Removal
-* Data Persistence
+```text
+node_modules/
+```
 
-### In Progress
-
-* Add Existing Technology
-* Create New Technology
-* Tags Management
-
-### Planned
-
-* Images Manager
-* Team Manager
-* Home Editor
-* About Editor
-* Contact Editor
-* SEO Manager
-* Git Publish Workflow
-
----
-
-## V1 Goal
-
-The objective of V1 is to provide complete content management for the existing portfolio architecture.
-
-Success criteria:
-
-* Every JSON-based content section can be managed through the CMS.
-* No manual JSON editing is required.
-* Content updates are saved directly from the CMS.
-* Publishing workflows (commit and push) should eventually be handled from within the CMS.
-* Migration to a new system should take only a few minutes.
-
-Typical setup on a new machine:
-
-1. Install Node.js
-2. Clone Portfolio Repository
-3. Clone CMS Repository
-4. Run:
+The folder is automatically recreated by:
 
 ```bash
 npm install
 ```
 
-5. Start CMS:
+This is standard practice for:
 
-```bash
-npm start
-```
-
-or
-
-```bash
-npm.cmd start
-```
-
-No manual JSON editing should ever be required.
-
-The CMS is intentionally designed around the existing portfolio structure and is not intended to create new pages, layouts, or application features automatically.
+- Electron
+- React
+- Next.js
+- Vue
+- Express
+- Node.js projects
 
 ---
 
-## Planned Quality-of-Life Improvements
+# Git Workflow
 
-### Portfolio Repository Configuration
+Current workflow:
 
-The current implementation uses a hardcoded portfolio path.
+```text
+Edit Content
+        ↓
+Save Changes
+        ↓
+JSON Updated
+        ↓
+Commit
+        ↓
+Push
+        ↓
+Website Updated
+```
 
-Future versions should use:
+---
+
+# V1 Goal
+
+The goal of V1 is:
+
+```text
+Every existing JSON-based content section
+should be editable through the CMS
+without manually editing JSON files.
+```
+
+Examples:
+
+- Projects
+- Technologies
+- Tags
+- Timeline
+- Achievements
+- Profile
+- Socials
+- Images
+- SEO
+
+---
+
+# Planned V1 Improvements
+
+- Add Existing Technology
+- Create New Technology
+- Tags Management
+- Images Manager
+- Team Manager
+- Timeline Manager
+- Home Editor
+- About Editor
+- Contact Editor
+- SEO Editor
+- Publish Button
+- Configurable Portfolio Repository Path
+
+---
+
+# Future Improvement
+
+Instead of hardcoding:
+
+```js
+const PORTFOLIO_ROOT = "...";
+```
+
+future versions should use:
 
 ```json
 {
@@ -233,16 +374,20 @@ Future versions should use:
 }
 ```
 
-stored in:
+stored inside:
 
 ```text
 cms-config.json
 ```
 
-Benefits:
+This will make migration to a new machine easier.
 
-* Easier migration to new systems
-* No source code modifications required
-* Cleaner deployment workflow
-* Better separation between CMS and portfolio repositories
+---
 
+# Author
+
+Harshit Kalra
+
+B.Tech Electrical Engineering
+
+IIT Ropar
