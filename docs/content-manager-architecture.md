@@ -2,13 +2,13 @@
 
 ## Purpose
 
-The Content Manager is a desktop application designed specifically for managing the Harshit Kalra Portfolio.
+The Portfolio Content Manager is a desktop application designed specifically for managing the Harshit Kalra Portfolio.
 
 The primary objective is:
 
-"If a content change requires opening VS Code, the Content Manager has failed."
+> "If a routine content change requires opening VS Code, the Content Manager has failed."
 
-All routine portfolio updates should be possible directly through the application.
+The application should allow all content stored in JSON files to be managed through a graphical interface.
 
 ---
 
@@ -16,13 +16,13 @@ All routine portfolio updates should be possible directly through the applicatio
 
 This application is NOT the future AI Portfolio Builder.
 
-This application exists solely for managing the current portfolio.
+This application exists solely for managing the current portfolio architecture.
 
-Future roadmap:
+Roadmap:
 
 Personal Portfolio
 ↓
-Content Manager
+Portfolio Content Manager
 ↓
 Portfolio Framework
 ↓
@@ -38,14 +38,20 @@ Every piece of information must exist in one location only.
 
 Examples:
 
-Technology Labels
+Technology Data
 → technologies.json
 
-Tag Colors
+Tag Data
 → project-tags.json
 
 Project Data
 → projects.json
+
+Timeline Data
+→ timeline.json
+
+Education Data
+→ education.json
 
 Social Links
 → socials.json
@@ -58,34 +64,52 @@ The GUI must never duplicate information.
 
 The user should never edit raw JSON.
 
-Instead:
+Workflow:
 
 JSON
 ↓
-Forms
+GUI Editor
 ↓
 Save
 ↓
 JSON Updated
 
+All editing should occur through forms, tables, image pickers, and visual controls.
+
 ---
 
-## Zero Code Workflow
+## Scope Definition
 
-The following tasks must not require code changes:
+Version 1 manages only data that already exists in JSON files.
 
-* Add Project
-* Edit Project
-* Delete Project
-* Add Technology
-* Change Technology Icon
-* Add Tag
-* Change Tag Color
-* Upload Project Images
-* Replace OG Image
-* Replace Favicon
-* Edit SEO
-* Edit Social Links
+If content is currently hardcoded inside HTML, CSS, or JavaScript, it remains outside the scope of the Content Manager.
+
+Examples:
+
+Managed by CMS:
+
+* Projects
+* Technologies
+* Tags
+* Timeline Entries
+* Education Entries
+* Achievements
+* Social Links
+* Contact Configuration
+* Profile Content
+* Hero Images
+
+Not Managed by CMS:
+
+* Section Headings
+* Page Layout
+* HTML Structure
+* CSS Styling
+* Animations
+* Navigation
+* Modal Layouts
+
+These remain code-managed until a future version requires otherwise.
 
 ---
 
@@ -95,29 +119,37 @@ Portfolio Content Manager
 
 Dashboard
 
-Content
+Home
 ├── Profile
-├── Timeline
-├── Achievements
-├── Projects
+└── Highlights
 
-System
+About
+├── About Profile
+├── Timeline
+├── Education
+└── Achievements
+
+Projects
+├── Projects
 ├── Technologies
 ├── Tags
-├── Socials
+└── Filters
 
-Media
+Contact
+├── Social Links
+└── Contact Configuration
+
+Assets
 ├── Images
-├── Documents
-├── Branding
+├── Resume
+├── OG Image
+└── Favicon
 
-Website
-├── SEO
-├── Deployment
+SEO
+├── robots.txt
+└── sitemap.xml
 
 Settings
-├── Git
-└── Application
 
 ---
 
@@ -129,201 +161,283 @@ Provide a portfolio overview.
 
 Displayed Information:
 
-Projects Count
+* Total Projects
+* Total Technologies
+* Total Tags
+* Total Timeline Entries
+* Total Education Entries
+* Total Achievements
+* Total Images
+* Resume Status
+* OG Image Status
+* Favicon Status
+* Recent Changes
 
-Technologies Count
+Dashboard is informational only.
 
-Tags Count
+---
 
-Images Count
+# Home Module
 
-Documents Count
+## Data Sources
 
-Current OG Image Status
+profile.json
 
-Current Favicon Status
+highlights.json
 
-Recent Changes
+---
 
-Last Deployment
+## Profile Editor
 
-The Dashboard is read-only.
+Manage:
+
+* Name
+* Roles
+* Mobile Role
+* About Text
+* Resume Reference
+* Hero Images
+* Social References
+
+---
+
+## Highlights Editor
+
+Manage:
+
+* Add Highlight
+* Edit Highlight
+* Delete Highlight
+* Reorder Highlights
+
+---
+
+# About Module
+
+## Data Sources
+
+about-profile.json
+
+timeline.json
+
+education.json
+
+achievements.json
+
+---
+
+## About Profile Editor
+
+Manage:
+
+* Hero Content
+* Who Am I Content
+* What I Do Cards
+
+---
+
+## Timeline Editor
+
+Manage:
+
+* Date / Period
+* Title
+* Description
+* Detailed Content
+* Images
+* Ordering
+
+Capabilities:
+
+* Add Entry
+* Edit Entry
+* Delete Entry
+* Reorder Entry
+
+---
+
+## Education Editor
+
+Manage:
+
+* Institute
+* Degree
+* Duration
+* Description
+* Logo
+
+Capabilities:
+
+* Add Entry
+* Edit Entry
+* Delete Entry
+
+---
+
+## Achievements Editor
+
+Manage:
+
+* Title
+* Metadata
+* Description
+
+Capabilities:
+
+* Add Achievement
+* Edit Achievement
+* Delete Achievement
 
 ---
 
 # Projects Module
 
-Data Source:
+## Data Sources
 
 projects.json
 
-Capabilities:
+project-tags.json
 
-Create Project
-
-Edit Project
-
-Delete Project
-
-Duplicate Project
-
-Reorder Projects
-
-Manage Images
-
-Manage Technologies
-
-Manage Tags
-
-Manage GitHub Links
-
-Manage Team Members
-
----
-
-## Project Editor
-
-Fields:
-
-Title
-
-Short Description
-
-Description
-
-GitHub Link
-
-Team Members
-
-Technologies
-
-Tags
-
-Images
-
-Project Status
-
-Image Gallery
-
-The editor should provide previews wherever possible.
-
----
-
-# Technologies Module
-
-Data Source:
+project-filters.json
 
 technologies.json
 
-Capabilities:
-
-Create Technology
-
-Edit Technology
-
-Delete Technology
-
-Upload Technology Icon
-
-Toggle Featured Status
-
 ---
 
-## Technology Editor
+## Projects Editor
 
-Fields:
+Manage:
 
-Label
-
-Key
-
-Icon
-
-Featured
-
-Icon Preview
-
-The GUI should automatically validate duplicate keys.
-
----
-
-# Tags Module
-
-Data Source:
-
-project-tags.json
+* Title
+* Short Description
+* Full Description
+* Team Members
+* Team Size
+* Technologies
+* Tags
+* GitHub URL
+* GitHub Status
+* Featured Status
+* Images
 
 Capabilities:
 
-Create Tag
-
-Edit Tag
-
-Delete Tag
-
-Assign Color
+* Create Project
+* Edit Project
+* Delete Project
+* Duplicate Project
+* Reorder Projects
 
 ---
 
-## Tag Editor
+## Technologies Editor
 
-Fields:
+Manage:
 
-Label
+* Name
+* Key
+* Category
+* Icon
 
-Key
+Capabilities:
 
-Color
+* Create Technology
+* Edit Technology
+* Delete Technology
+* Upload Icon
 
-Preview
+Validation:
 
-The user should not manually enter colors.
-
-Instead the GUI should provide a predefined palette.
-
-Example:
-
-Purple
-
-Blue
-
-Green
-
-Orange
-
-Pink
-
-Grey
-
-The GUI generates JSON automatically.
+* No duplicate keys
 
 ---
 
-# Socials Module
+## Tags Editor
 
-Data Source:
+Manage:
+
+* Name
+* Key
+* Color
+
+Capabilities:
+
+* Create Tag
+* Edit Tag
+* Delete Tag
+
+Color Selection:
+
+Use a visual color picker or predefined palette.
+
+Users should not manually type color values.
+
+---
+
+## Filters Editor
+
+Manage:
+
+* Filter Name
+* Order
+* Visibility
+
+Capabilities:
+
+* Create Filter
+* Edit Filter
+* Delete Filter
+* Reorder Filters
+
+---
+
+# Contact Module
+
+## Data Sources
 
 socials.json
 
-Capabilities:
-
-Create Social Link
-
-Edit Social Link
-
-Delete Social Link
-
-Upload Icon
-
-Preview Link
+contact-config.json
 
 ---
 
-# Media Module
+## Social Links Editor
+
+Manage:
+
+* Platform
+* URL
+* Icon
+* Tooltip
+
+Capabilities:
+
+* Add Social
+* Edit Social
+* Delete Social
+
+---
+
+## Contact Configuration Editor
+
+Manage:
+
+* Access Key
+* Subject
+* Form Configuration
+
+Capabilities:
+
+* Update Configuration
+* Validate Required Fields
+
+---
+
+# Assets Module
 
 Purpose:
 
-Manage all portfolio assets.
+Manage non-JSON portfolio assets.
 
 ---
 
@@ -331,89 +445,64 @@ Manage all portfolio assets.
 
 Manage:
 
-Project Images
-
-Profile Images
-
-General Images
+* Hero Images
+* Project Images
+* Timeline Images
+* General Images
 
 Capabilities:
 
-Upload
-
-Delete
-
-Rename
-
-Preview
-
-Reorder
+* Upload
+* Delete
+* Rename
+* Preview
+* Reorder
 
 ---
 
-## Documents
+## Resume
 
 Manage:
 
-Resume
+* Upload Resume
+* Replace Resume
+* Preview Resume
 
-Certificates
+Supported Format:
 
-Portfolio PDFs
-
-Capabilities:
-
-Upload
-
-Delete
-
-Replace
-
-Preview
+* PDF
 
 ---
 
-## Branding
+## Open Graph Image
 
-Purpose:
-
-Manage website identity.
-
----
-
-### OG Image
-
-Current Location:
+Location:
 
 assets/images/og-image.png
 
 Capabilities:
 
-Preview
-
-Replace
-
-Validate Size
+* Preview
+* Replace
+* Validate Dimensions
 
 ---
 
-### Favicon
+## Favicon
 
-Current Location:
+Location:
 
 assets/favicon/
 
 Capabilities:
 
-Preview
-
-Replace
-
-Regenerate Package
+* Preview
+* Replace
+* Regenerate Favicon Package
 
 Future Capability:
 
-Generate all favicon files from a single uploaded image.
+Generate all favicon assets from a single uploaded image.
 
 ---
 
@@ -421,89 +510,36 @@ Generate all favicon files from a single uploaded image.
 
 Purpose:
 
-Manage page metadata.
+Manage search engine support files.
 
-Pages:
+Version 1 Scope:
 
-Home
+robots.txt
 
-About
+sitemap.xml
 
-Projects
+Capabilities:
 
-Beyond Tech
+* Edit robots.txt
+* Edit sitemap.xml
+* Validate File Structure
 
-Contact
-
----
-
-## SEO Editor
-
-Fields:
-
-Title
-
-Description
-
-Keywords
-
-Author
-
-Open Graph Title
-
-Open Graph Description
-
-Open Graph URL
-
-Preview
-
-No HTML editing should be required.
+Page-level metadata editing is outside Version 1 scope.
 
 ---
 
-# Deployment Module
+# Settings Module
 
 Purpose:
 
-Manage Git and deployment workflows.
+Application-level configuration.
 
----
+Manage:
 
-## Phase 1
-
-Read-only status.
-
-Display:
-
-Modified Files
-
-Current Branch
-
-Latest Commit
-
----
-
-## Phase 2
-
-Actions:
-
-Commit
-
-Push
-
-Open Repository
-
----
-
-## Phase 3
-
-Actions:
-
-Deployment Status
-
-Deployment Logs
-
-Deployment History
+* Portfolio Location
+* Asset Paths
+* Backup Settings
+* Application Preferences
 
 ---
 
@@ -511,17 +547,15 @@ Deployment History
 
 The application should prevent:
 
-Duplicate Technology Keys
+* Duplicate Technology Keys
+* Duplicate Tag Keys
+* Duplicate Filter Keys
+* Missing Required Fields
+* Invalid Image References
+* Broken Social Links
+* Invalid GitHub URLs
 
-Duplicate Tag Keys
-
-Invalid Image Paths
-
-Missing Required Fields
-
-Broken Social Links
-
-Invalid GitHub URLs
+Validation should occur before saving.
 
 ---
 
@@ -529,31 +563,23 @@ Invalid GitHub URLs
 
 Potential future integrations:
 
-GitHub API
+* GitHub API
+* Vercel API
+* Automatic Deployment
+* AI Content Assistance
+* Image Optimization
+* Portfolio Analytics
 
-Vercel API
-
-AI Content Generation
-
-Automatic Image Optimization
-
-Portfolio Analytics
-
-These integrations should remain optional and should not affect the core architecture.
+These integrations should remain optional and must not affect the core architecture.
 
 ---
 
 # Success Criteria
 
-The Content Manager is considered successful when:
-
-A complete portfolio update can be performed without:
+The Content Manager is considered successful when a complete portfolio content update can be performed without:
 
 * Opening VS Code
 * Editing JSON manually
-* Moving files manually
-* Editing HTML
-* Editing CSS
-* Editing JavaScript
+* Moving asset files manually
 
-The GUI becomes the single interface for portfolio management.
+The application becomes the primary interface for managing all portfolio content stored within the portfolio data architecture.
