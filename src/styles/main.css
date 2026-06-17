@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    height:100vh;
+    font-family:Segoe UI,sans-serif;
+}
+
+.sidebar{
+    width:260px;
+    background:#111827;
+    color:white;
+    padding:24px;
+}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.nav-btn{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+
+    border:none;
+
+    cursor:pointer;
+}
+
+.content{
+    flex:1;
+    padding:40px;
+}
