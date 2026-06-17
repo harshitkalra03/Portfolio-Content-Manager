@@ -6,8 +6,20 @@ contextBridge.exposeInMainWorld(
         getProjects: () =>
             ipcRenderer.invoke("getProjects"),
 
+        saveProjects: (data) =>
+            ipcRenderer.invoke(
+                "saveProjects",
+                data
+            ),
+
         getTechnologies: () =>
             ipcRenderer.invoke("getTechnologies"),
+
+        saveTechnologies: (data) =>
+            ipcRenderer.invoke(
+                "saveTechnologies",
+                data
+            ),
 
         getTags: () =>
             ipcRenderer.invoke("getTags"),

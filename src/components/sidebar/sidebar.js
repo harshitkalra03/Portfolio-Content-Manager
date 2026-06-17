@@ -3,25 +3,77 @@ export function renderSidebar() {
     return `
         <div class="sidebar">
 
-            <div class="logo">
+            <div class="sidebar-logo">
                 HK CMS
             </div>
 
-            <button data-page="dashboard">Dashboard</button>
+            <div class="sidebar-section">
 
-            <button data-page="home">Home</button>
+                <button
+                    class="nav-btn"
+                    data-page="dashboard"
+                >
+                    Dashboard
+                </button>
 
-            <button data-page="about">About</button>
+            </div>
 
-            <button data-page="projects">Projects</button>
+            <div class="sidebar-heading">
+                CONTENT
+            </div>
 
-            <button data-page="contact">Contact</button>
+            <button
+                class="nav-btn"
+                data-page="home"
+            >
+                Home
+            </button>
 
-            <button data-page="assets">Assets</button>
+            <button
+                class="nav-btn"
+                data-page="about"
+            >
+                About
+            </button>
 
-            <button data-page="seo">SEO</button>
+            <button
+                class="nav-btn"
+                data-page="projects"
+            >
+                Projects
+            </button>
 
-            <button data-page="settings">Settings</button>
+            <button
+                class="nav-btn"
+                data-page="contact"
+            >
+                Contact
+            </button>
+
+            <div class="sidebar-heading">
+                SYSTEM
+            </div>
+
+            <button
+                class="nav-btn"
+                data-page="assets"
+            >
+                Assets
+            </button>
+
+            <button
+                class="nav-btn"
+                data-page="seo"
+            >
+                SEO
+            </button>
+
+            <button
+                class="nav-btn"
+                data-page="settings"
+            >
+                Settings
+            </button>
 
         </div>
     `;

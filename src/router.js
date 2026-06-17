@@ -37,10 +37,6 @@ export async function loadPage(pageName) {
             module.init();
         }
 
-        if (module.loadDashboard) {
-            module.loadDashboard();
-        }
-
     } catch (error) {
 
         console.log(

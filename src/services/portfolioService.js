@@ -1,6 +1,9 @@
 const path = require("path");
 
-const { readJson } = require("./jsonService");
+const {
+    readJson,
+    writeJson
+} = require("./jsonService");
 
 const PORTFOLIO_ROOT =
     "E:/Harshit Documents/Harshit-Kalra-Portfolio-main";
@@ -12,10 +15,32 @@ function getProjects() {
     );
 }
 
+function saveProjects(data) {
+
+    return writeJson(
+        path.join(
+            PORTFOLIO_ROOT,
+            "data/projects.json"
+        ),
+        data
+    );
+}
+
 function getTechnologies() {
 
     return readJson(
         path.join(PORTFOLIO_ROOT, "data/technologies.json")
+    );
+}
+
+function saveTechnologies(data) {
+
+    return writeJson(
+        path.join(
+            PORTFOLIO_ROOT,
+            "data/technologies.json"
+        ),
+        data
     );
 }
 
@@ -63,7 +88,11 @@ function getSocials() {
 
 module.exports = {
     getProjects,
+    saveProjects,
+
     getTechnologies,
+    saveTechnologies,
+
     getTags,
     getTimeline,
     getEducation,

@@ -35,6 +35,24 @@ ipcMain.handle(
 );
 
 ipcMain.handle(
+    "saveProjects",
+    (event, data) => {
+
+        return portfolioService
+            .saveProjects(data);
+    }
+);
+
+ipcMain.handle(
+    "saveTechnologies",
+    (event, data) => {
+
+        return portfolioService
+            .saveTechnologies(data);
+    }
+);
+
+ipcMain.handle(
     "getTags",
     () => portfolioService.getTags()
 );
